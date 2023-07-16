@@ -5,7 +5,7 @@ from PIL import Image
 import time
 
 # Init Push2
-push = push2_python.Push2()
+push = push2_python.Push2(run_simulator=True)
 print(dir(push))
 
 
@@ -61,9 +61,19 @@ def on_button_pressed(push, button_name):
 @push2_python.on_button_pressed(push2_python.constants.BUTTON_PLAY)
 def on_play_pressed(push):
     print('Play!')
+
+@push2_python.on_button_pressed('play')
+def on_play_pressed(push):
+    print('Play!')
+
+@push2_python.on_button_pressed('85')
+def on_play_pressed(push):
+    print('Play!')
 # Start infinite loop so the app keeps running
 print('App runnnig...')
-colors = ["white","green"]
+colors = ['black','orange','yellow','turquoise','dark_gray','purple','pink','light_gray','white','light_gray','dark_gray','blue', 'green','red', 'white']
+
+colors2 = ["white","green"]
 import numpy
 #push.display.display_frame(numpy.array(img,dtype=numpy.uint16), input_format=push2_python.constants.FRAME_FORMAT_RGB)
 
@@ -84,6 +94,6 @@ while True:
             #print(pad_ij)
             #print(color)
             #print("\n")
-            push.pads.set_pad_color(pad_ij, color)
+            push.pads.set_pad_color(pad_ij,color=color)
             time.sleep(.1)
     
